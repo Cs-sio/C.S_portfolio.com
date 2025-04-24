@@ -64,6 +64,9 @@ body {
     padding: 0 20px;
     position: relative;
     z-index: 2;
+    padding-top: 70px;
+    margin-left: 250px;
+    width: calc(100% - 250px);
 }
 
 .content-wrapper {
@@ -236,4 +239,311 @@ header {
     color: var(--accent-color);
     text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
     font-weight: bold;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 2rem 0;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar.scroll-down {
+    transform: translateY(-100%);
+}
+
+.navbar.scroll-up {
+    transform: translateY(0);
+}
+
+.nav-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 2rem;
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: #00ff88;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.nav-menu li {
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-menu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #00ff88;
+    background-color: rgba(0, 255, 136, 0.1);
+    transform: translateX(10px);
+}
+
+.nav-menu a.active .menu-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%;
+        height: auto;
+        padding: 1rem 0;
+    }
+
+    .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+
+    .logo {
+        margin-bottom: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        transition: left 0.3s ease;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: 1.5rem 0;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        transform: translateX(0);
+    }
+
+    .container {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* Section Styles */
+.section-hidden {
+    display: none;
+}
+
+.section-visible {
+    display: block;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.bts-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.bts-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 255, 157, 0.1);
+    transition: all 0.3s ease;
+}
+
+.bts-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+}
+
+.bts-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.bts-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.bts-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.bts-card ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.bts-card ul li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .bts-content {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+}
+
+/* Stages et Epreuves Styles */
+.stages-content,
+.epreuves-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.stage-card,
+.epreuve-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 255, 157, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stage-card:hover,
+.epreuve-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+}
+
+.stage-card h3,
+.epreuve-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.stage-card p,
+.epreuve-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.stage-card ul,
+.epreuve-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.stage-card ul li,
+.epreuve-card ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.stage-card ul li:before,
+.epreuve-card ul li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .stages-content,
+    .epreuves-content {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+}
+
+/* Menu Icons Styles */
+.menu-icon {
+    display: none;
+}
+
+.nav-menu a:hover .menu-icon {
+    display: none;
+}
+
+.kali-icon {
+    filter: brightness(0) invert(1);
+}
+
+.debian-icon {
+    filter: brightness(0) invert(1);
+}
+
+.redhat-icon {
+    filter: brightness(0) invert(1);
+}
+
+.blackarch-icon {
+    filter: brightness(0) invert(1);
+}
+
+.nav-menu a:hover .kali-icon,
+.nav-menu a:hover .debian-icon,
+.nav-menu a:hover .redhat-icon,
+.nav-menu a:hover .blackarch-icon {
+    filter: brightness(0) saturate(100%) invert(82%) sepia(71%) saturate(481%) hue-rotate(93deg) brightness(97%) contrast(87%);
 } 
